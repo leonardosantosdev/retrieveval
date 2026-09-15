@@ -1,0 +1,81 @@
+[
+  {
+    "query": "How do I cancel my subscription?",
+    "relevant_documents": ["cancellation.md"],
+    "notes": "Direct lexical match; both strategies should find this."
+  },
+  {
+    "query": "I want to stop paying for the service, what happens to everything I have stored?",
+    "relevant_documents": ["cancellation.md"],
+    "notes": "Paraphrase: the corpus never says 'stop paying'. Favours dense retrieval."
+  },
+  {
+    "query": "Why does authentication fail after token expiration?",
+    "relevant_documents": ["authentication.md", "troubleshooting.md"]
+  },
+  {
+    "query": "REFRESH_TOKEN_REUSED",
+    "relevant_documents": ["authentication.md"],
+    "notes": "Bare identifier. Favours BM25."
+  },
+  {
+    "query": "TOKEN_EXPIRED 401",
+    "relevant_documents": ["troubleshooting.md", "authentication.md"]
+  },
+  {
+    "query": "What does a 429 response mean and how long should I wait?",
+    "relevant_documents": ["troubleshooting.md", "rate_limits.md"]
+  },
+  {
+    "query": "X-RateLimit-Remaining header",
+    "relevant_documents": ["rate_limits.md"],
+    "notes": "Exact header name. Favours BM25."
+  },
+  {
+    "query": "How many API calls am I allowed to make each minute?",
+    "relevant_documents": ["rate_limits.md"],
+    "notes": "Paraphrase of 'quota of 600 requests per minute'."
+  },
+  {
+    "query": "How can I get all of my information out of the platform?",
+    "relevant_documents": ["data_export.md"],
+    "notes": "Paraphrase: the corpus says 'export', never 'get information out'."
+  },
+  {
+    "query": "What format are exports delivered in?",
+    "relevant_documents": ["data_export.md"]
+  },
+  {
+    "query": "Who is allowed to change someone else's role?",
+    "relevant_documents": ["team_permissions.md"]
+  },
+  {
+    "query": "Someone left the company, what happens to the documents they created?",
+    "relevant_documents": ["team_permissions.md"],
+    "notes": "Paraphrase of 'removing a member ... reassigns any content they owned'."
+  },
+  {
+    "query": "My webhook endpoint is not receiving events, how many times do you retry?",
+    "relevant_documents": ["webhooks.md"]
+  },
+  {
+    "query": "HMAC signature verification does not match",
+    "relevant_documents": ["webhooks.md"]
+  },
+  {
+    "query": "My card was declined, when do you try charging it again?",
+    "relevant_documents": ["billing.md"]
+  },
+  {
+    "query": "Can I add a VAT number to an invoice I already received?",
+    "relevant_documents": ["billing.md"]
+  },
+  {
+    "query": "Is my annual plan refunded if I quit early?",
+    "relevant_documents": ["cancellation.md"]
+  },
+  {
+    "query": "requests are timing out through our proxy",
+    "relevant_documents": ["troubleshooting.md"]
+  }
+]

@@ -1,0 +1,42 @@
+# Example RetrievEval configuration.
+# Every key is optional; the values below are the defaults unless noted.
+
+chunking:
+  # Measured in characters, not tokens.
+  size: 500
+  overlap: 50
+
+# Which strategies to benchmark: bm25, dense, hybrid.
+retrievers:
+  - bm25
+  - dense
+  - hybrid
+
+dense:
+  # Any local Sentence Transformers model. Downloaded once, then cached.
+  model: sentence-transformers/all-MiniLM-L6-v2
+  batch_size: 32
+  cache_dir: .retrieveval_cache
+
+hybrid:
+  # Reciprocal Rank Fusion smoothing constant.
+  rrf_k: 60
+  # Candidates taken from each retriever before fusing.
+  depth: 100
+
+reranker:
+  # Off by default: it is the slowest part of a run.
+  enabled: true
+  model: cross-encoder/ms-marco-MiniLM-L-6-v2
+  # Candidates handed to the cross-encoder. Also the ceiling on what
+  # reranking can recover: it can only reorder what the base retriever found.
+  candidates: 50
+  # Which base retrievers get a reranked variant. Defaults to all of them.
+  applies_to:
+    - hybrid
+
+evaluation:
+  k:
+    - 1
+    - 5
+    - 10

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "retrieveval"
+version = "0.1.0"
+description = "Benchmark retrieval strategies for your own RAG corpus, locally and without paid APIs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+dependencies = [
+    "typer>=0.12",
+    "rich>=13.0",
+    "PyYAML>=6.0",
+    "numpy>=1.24",
+    "pypdf>=4.0",
+    "sentence-transformers>=3.0",
+]
+
+[project.optional-dependencies]
+# Word support. HTML needs nothing extra -- it uses the standard library.
+office = ["python-docx>=1.1"]
+dev = ["pytest>=8.0", "python-docx>=1.1"]
+
+[project.scripts]
+retrieveval = "retrieveval.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/retrieveval"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "slow: requires downloading a local model (deselect with '-m \"not slow\"')",
+]
